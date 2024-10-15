@@ -54,4 +54,16 @@ class mainTest {
                 Prestamo prestamo2 = new Prestamo(usuario1, libro2, LocalDate.now(), LocalDate.now().plusWeeks(2), biblioteca1);
                 assertEquals(1 , usuario1.getPrestamos().size());
         }
+
+        @Test
+        void testMultas(){
+                Biblioteca biblioteca1 = new Biblioteca("Biblioteca 1", "Calle 1");
+                Libro libro1 = new Libro("El Señor de los Anillos", "J.R.R. Tolkien", 123456, "1954");
+                biblioteca1.agregarLibro(libro1);
+                Usuario usuario1 = new Usuario("Gustavo Perez", 1);
+                Prestamo prestamo1 = new Prestamo(usuario1, libro1,LocalDate.now(), LocalDate.now().plusWeeks(2), biblioteca1);
+                prestamo1.setFechaDeDevolucion(LocalDate.now().minusWeeks(1));
+                Multa multa1 = new Multa(100, LocalDate.now(), usuario1, prestamo1);
+                assertEquals(1, usuario1.getMultas().size());
+        }
 }
