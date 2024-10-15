@@ -47,11 +47,14 @@ public class Biblioteca {
 			empleado.setIdentificacion(identificacion);
 			empleado.setCargo(cargo);
 		}
-
 	}
 
 	public void eliminarEmpleado(Empleado empleado) {
 		empleados.remove(empleado);
+	}
+
+	public boolean existeLibro(Libro libro) {
+		return this.libros.contains(libro);
 	}
 
 	public void crearCategoria() {

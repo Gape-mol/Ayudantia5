@@ -1,4 +1,7 @@
 import org.junit.jupiter.api.*;
+
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class mainTest {
@@ -37,5 +40,18 @@ class mainTest {
                 for (Empleado empleado : biblioteca1.getEmpleados()) {
                         System.out.println("- " + empleado.getNombre() + " (" + empleado.getCargo() + ")");
                 }
+                assertEquals(2, biblioteca1.getEmpleados().size());
+        }
+
+        @Test
+        void testUsuario(){
+                Biblioteca biblioteca1 = new Biblioteca("Biblioteca 1", "Calle 1");
+                Libro libro1 = new Libro("El Señor de los Anillos", "J.R.R. Tolkien", 123456, "1954");
+                biblioteca1.agregarLibro(libro1);
+                Usuario usuario1 = new Usuario("Gustavo Perez", 1);
+                Prestamo prestamo1 = new Prestamo(usuario1, libro1,LocalDate.now(), LocalDate.now().plusWeeks(2), biblioteca1);
+                Libro libro2 = new Libro("El Quijote", "Miguel de Cervantes", 654321, "1605");
+                Prestamo prestamo2 = new Prestamo(usuario1, libro2, LocalDate.now(), LocalDate.now().plusWeeks(2), biblioteca1);
+                assertEquals(1 , usuario1.getPrestamos().size());
         }
 }
