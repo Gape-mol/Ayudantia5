@@ -4,6 +4,16 @@ public class Empleado {
 	private String cargo;
 	public Biblioteca biblioteca;
 
+	public Empleado(String nombre, String identificacion, String cargo) {
+		this.nombre = nombre;
+		this.identificacion = identificacion;
+		this.cargo = cargo;
+	}
+	public void setBiblioteca(Biblioteca biblioteca) {
+		this.biblioteca = biblioteca;
+		biblioteca.agregarEmpleado(this);
+	}
+
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -26,5 +36,9 @@ public class Empleado {
 
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
+	}
+
+	public Biblioteca getBiblioteca() {
+		return this.biblioteca;
 	}
 }

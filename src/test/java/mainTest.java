@@ -24,4 +24,18 @@ class mainTest {
                 }
                 assertEquals(2, libro1.getBibliotecas().size());
         }
+
+        @Test
+        void testEmpleados() {
+                Biblioteca biblioteca1 = new Biblioteca("Biblioteca1", "Calle 1");
+                Biblioteca biblioteca2 = new Biblioteca("Biblioteca2", "Calle 2");
+                Empleado empleado1 = new Empleado("Juan", "1", "Bibliotecario");
+                Empleado empleado2 = new Empleado("Ana", "2", "Auxiliar");
+                empleado1.setBiblioteca(biblioteca1);
+                empleado2.setBiblioteca(biblioteca1);
+                System.out.println("Empleados en la " + biblioteca1.getNombre() + ":");
+                for (Empleado empleado : biblioteca1.getEmpleados()) {
+                        System.out.println("- " + empleado.getNombre() + " (" + empleado.getCargo() + ")");
+                }
+        }
 }

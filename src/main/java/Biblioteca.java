@@ -34,16 +34,24 @@ public class Biblioteca {
 		}
 	}
 
-	public void agregarEmpleado() {
-		throw new UnsupportedOperationException();
+	public void agregarEmpleado(Empleado empleado) {
+		if (!this.empleados.contains(empleado)) {
+			this.empleados.add(empleado);
+			empleado.setBiblioteca(this);
+		}
 	}
 
-	public void modificarEmpleado() {
-		throw new UnsupportedOperationException();
+	public void modificarEmpleado(Empleado empleado, String nombre, String identificacion, String cargo) {
+		if (this.empleados.contains(empleado)) {
+			empleado.setNombre(nombre);
+			empleado.setIdentificacion(identificacion);
+			empleado.setCargo(cargo);
+		}
+
 	}
 
-	public void eliminarEmpleado() {
-		throw new UnsupportedOperationException();
+	public void eliminarEmpleado(Empleado empleado) {
+		empleados.remove(empleado);
 	}
 
 	public void crearCategoria() {
@@ -65,5 +73,7 @@ public class Biblioteca {
 	public String getDireccion() {
 		return this.direccion;
 	}
-
+	public ArrayList<Empleado> getEmpleados() {
+		return this.empleados;
+	}
 }
