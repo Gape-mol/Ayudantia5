@@ -1,23 +1,37 @@
 import java.util.ArrayList;
 
 public class Libro {
-	private String título;
+	private String titulo;
 	private String autor;
 	private int ISBN;
-	private String año_de_publicacion;
-	private ArrayList<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();
-	public Categoría Categoría;
+	private String anoDePublicacion;
+	private ArrayList<Biblioteca> bibliotecas;
+	public Categoria Categoria;
 
-	public void asignarCategoria() {
-		throw new UnsupportedOperationException();
+	public Libro(String titulo, String autor, int ISBN, String anoDePublicacion) {
+		this.titulo = titulo;
+		this.autor = autor;
+		this.ISBN = ISBN;
+		this.anoDePublicacion = anoDePublicacion;
+		this.bibliotecas = new ArrayList<Biblioteca>();
 	}
 
-	public String getTítulo() {
-		return this.título;
+	public void asignarCategoria(Categoria categoria) {
+		categoria.agregarLibro(this);
+		this.Categoria = categoria;
 	}
 
-	public void setTítulo(String título) {
-		this.título = título;
+	public void asignarBibliotecas(Biblioteca biblioteca){
+		this.bibliotecas.add(biblioteca);
+		biblioteca.agregarLibro(this);
+	}
+
+	public String getTitulo() {
+		return this.titulo;
+	}
+
+	public void setTítulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public String getAutor() {
@@ -36,11 +50,20 @@ public class Libro {
 		this.ISBN = ISBN;
 	}
 
-	public String getAño_de_publicacion() {
-		return this.año_de_publicacion;
+	public String getAnoDePublicacion() {
+		return this.anoDePublicacion;
 	}
 
-	public void setAño_de_publicacion(String año_de_publicacion) {
-		this.año_de_publicacion = año_de_publicacion;
+	public void setAnoDePublicacion(String anoDePublicacion) {
+		this.anoDePublicacion = anoDePublicacion;
 	}
+
+	public Categoria getCategoria() {
+		return this.Categoria;
+	}
+
+	public ArrayList<Biblioteca> getBibliotecas() {
+		return this.bibliotecas;
+	}
+
 }
